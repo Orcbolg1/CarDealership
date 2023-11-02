@@ -74,7 +74,7 @@ public class Dealership {
         // Method to remove a specific vehicle from the inventory
         // Add logic here to remove the provided vehicle from the inventory
     }
-}
+
 
     // Adding a vehicle to the inventory
     public void addVehicle(Vehicle vehicle) {
@@ -92,5 +92,7 @@ public class Dealership {
         return inventory;
     }
 
-
+    public ArrayList<Vehicle> getInventory() {
+        return inventory;
+    }
 }
