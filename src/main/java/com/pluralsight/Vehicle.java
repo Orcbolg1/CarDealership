@@ -2,24 +2,29 @@ package com.pluralsight;
 
 public class Vehicle {
 
+    // Properties of the Vehicle class
     private int vin;
     private int year;
     private String make;
     private String model;
     private String color;
+    private String type;
     private int odometer;
     private double price;
 
-    public Vehicle(int vin, int year, String make, String model, String color, int odometer, double price) {
+    // Constructor to initialize a Vehicle object
+    public Vehicle(int vin, int year, String make, String model, String type, String color, int odometer, double price) {
         this.vin = vin;
         this.year = year;
         this.make = make;
         this.model = model;
+        this.type = type;
         this.color = color;
         this.odometer = odometer;
         this.price = price;
     }
 
+    // Getters and setters for the Vehicle properties
     public int getVin() {
         return vin;
     }
@@ -52,6 +57,14 @@ public class Vehicle {
         this.model = model;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getColor() {
         return color;
     }
@@ -76,14 +89,16 @@ public class Vehicle {
         this.price = price;
     }
 
+    // Override of the toString method to represent a Vehicle's details
     @Override
     public String toString() {
-        return "Vehicles{" +
+        return "Vehicle{" +
                 "vin=" + vin +
                 ", year=" + year +
                 ", make='" + make + '\'' +
                 ", model='" + model + '\'' +
                 ", color='" + color + '\'' +
+                ", type='" + type + '\'' +
                 ", odometer=" + odometer +
                 ", price=" + price +
                 '}';
