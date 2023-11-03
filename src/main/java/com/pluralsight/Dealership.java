@@ -1,14 +1,17 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Dealership {
 
+    // Properties of the Dealership Class
     private String dealershipName;
     private String dealershipAddress;
     private String dealershipPhoneNumber;
     private ArrayList<Vehicle>inventory;
 
+    // Constructor to initialize a Dealership object
     public Dealership(String dealershipName, String dealershipAddress, String dealershipPhoneNumber) {
         this.dealershipName = dealershipName;
         this.dealershipAddress = dealershipAddress;
@@ -16,9 +19,38 @@ public class Dealership {
         this.inventory = new ArrayList<Vehicle>();
     }
 
+    // Getters and setters for the Dealership properties
+    public String getDealershipName() {
+        return dealershipName;
+    }
+
+    public void setDealershipName(String dealershipName) {
+        this.dealershipName = dealershipName;
+    }
+
+    public String getDealershipAddress() {
+        return dealershipAddress;
+    }
+
+    public void setDealershipAddress(String dealershipAddress) {
+        this.dealershipAddress = dealershipAddress;
+    }
+
+    public String getDealershipPhoneNumber() {
+        return dealershipPhoneNumber;
+    }
+
+    public void setDealershipPhoneNumber(String dealershipPhoneNumber) {
+        this.dealershipPhoneNumber = dealershipPhoneNumber;
+    }
+
+    public void setInventory(ArrayList<Vehicle> inventory) {
+        this.inventory = inventory;
+    }
+
     // Method to get vehicles within the specified price range.
-    public ArrayList<Vehicle> getVehiclesByPrice(double min, double max){
-            ArrayList<Vehicle> inventoryWithinRange = new ArrayList<>();
+    public List<Vehicle> getVehiclesByPrice(double min, double max){
+            List<Vehicle> inventoryWithinRange = new ArrayList<>();
 
         // Iterate through the inventory to find vehicles within the given price range
             for(Vehicle vehicle: inventory){
@@ -30,8 +62,8 @@ public class Dealership {
         }
 
     // Method to get vehicles by make and model
-    public ArrayList<Vehicle> getVehiclesByMakeAndModel(String make, String model) {
-        ArrayList<Vehicle> vehiclesByMakeAndModel = new ArrayList<>();
+    public List<Vehicle> getVehiclesByMakeAndModel(String make, String model) {
+        List<Vehicle> vehiclesByMakeAndModel = new ArrayList<>();
 
         for (Vehicle vehicle : inventory) {
             if (vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)) {
@@ -42,30 +74,30 @@ public class Dealership {
         return vehiclesByMakeAndModel;
     }
 
-    public ArrayList<Vehicle> getVehiclesByYear(int min, int max) {
+    public List<Vehicle> getVehiclesByYear(int min, int max) {
         // Method to retrieve vehicles by a specific year
-        ArrayList<Vehicle> vehiclesByYear = new ArrayList<>();
+        List<Vehicle> vehiclesByYear = new ArrayList<>();
         // Add logic here to filter vehicles by year
         return vehiclesByYear;
     }
 
-    public ArrayList<Vehicle> getVehiclesByColor(String color) {
+    public List<Vehicle> getVehiclesByColor(String color) {
         // Method to retrieve vehicles by a specific color
-        ArrayList<Vehicle> vehiclesByColor = new ArrayList<>();
+        List<Vehicle> vehiclesByColor = new ArrayList<>();
         // Add logic here to filter vehicles by color
         return vehiclesByColor;
     }
 
-    public ArrayList<Vehicle> getVehiclesByMileage(int minMileage, int maxMileage) {
+    public List<Vehicle> getVehiclesByMileage(int minMileage, int maxMileage) {
         // Method to retrieve vehicles within a specific mileage range
-        ArrayList<Vehicle> vehiclesByMileage = new ArrayList<>();
+        List<Vehicle> vehiclesByMileage = new ArrayList<>();
         // Add logic here to filter vehicles by mileage range
         return vehiclesByMileage;
     }
 
-    public ArrayList<Vehicle> getVehiclesByType(String type) {
+    public List<Vehicle> getVehiclesByType(String type) {
         // Method to retrieve vehicles by a specific type
-        ArrayList<Vehicle> vehiclesByType = new ArrayList<>();
+        List<Vehicle> vehiclesByType = new ArrayList<>();
         // Add logic here to filter vehicles by type
         return vehiclesByType;
     }
@@ -88,11 +120,11 @@ public class Dealership {
     }
 
     //Method to return the whole inventory
-    public ArrayList<Vehicle> getAllVehicles() {
+    public List<Vehicle> getAllVehicles() {
         return inventory;
     }
 
-    public ArrayList<Vehicle> getInventory() {
+    public List<Vehicle> getInventory() {
         return inventory;
     }
 }
