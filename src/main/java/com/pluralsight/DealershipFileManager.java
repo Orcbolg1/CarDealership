@@ -18,23 +18,23 @@ public class DealershipFileManager {
                     if (lineNumber == 1) {
                         // If it's the first line (usually for Dealership details)
                         // Extract and set the Dealership name, address, and phone number
-                        String name = parts[0];
+                        String name = parts[0];                         // dealership name
                         dealership.setDealershipName(name);
-                        String address = parts[1];
+                        String address = parts[1];                      //dealership address
                         dealership.setDealershipAddress(address);
-                        String phoneNumber = parts[2];
+                        String phoneNumber = parts[2];                  // dealership phone number
                         dealership.setDealershipPhoneNumber(phoneNumber);
                     } else {
                         // If it's a line for a vehicle, parse the details and create a Vehicle object
                         String[] data = line.split("\\|");
-                        int vin = Integer.parseInt(data[0]);
-                        int year = Integer.parseInt(data[1]);
-                        String make = data[2];
-                        String model = data[3];
-                        String type = data[4];
-                        String color = data[5];
-                        int odometer = Integer.parseInt(data[6]);
-                        double price = Double.parseDouble(data[7]);
+                        int vin = Integer.parseInt(data[0]);    // vin
+                        int year = Integer.parseInt(data[1]);   // year
+                        String make = data[2];                  // make
+                        String model = data[3];                 // model
+                        String type = data[4];                  // type
+                        String color = data[5];                 // color
+                        int odometer = Integer.parseInt(data[6]);   // odometer
+                        double price = Double.parseDouble(data[7]); // price
 
                         // Create a Vehicle object and add it to the Dealership's inventory
                         Vehicle vehicle = new Vehicle(vin, year, make, model,type, color, odometer, price);
@@ -59,6 +59,20 @@ public class DealershipFileManager {
             // You might use a loop to iterate through the vehicles in the dealership's inventory
 
             // Provide error handling if any exceptions occur during file writing
+            try{
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("dealership.csv"));
+            //save dealership info
+            bufferedWriter.write(dealership.toString()+"\n");
+
+            //save all the vehicles
+            for (Vehicle vehicle : dealership.getInventory()) {
+                bufferedWriter.write(vehicle.toString()+"\n");
+            }
+            bufferedWriter.close(); //flushes the buffer
+
+            } catch (IOException e) {
+            throw new RuntimeException(e);
+            }
         }
 }
 

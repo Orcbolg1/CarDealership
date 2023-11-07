@@ -49,6 +49,13 @@ public class Dealership {
     }
 
     // Method to get vehicles within the specified price range.
+
+    public List<Vehicle> getVehiclesByVin(int vin) {
+        ArrayList<Vehicle> filteredList = new ArrayList<>(inventory);
+        filteredList.removeIf(vehicle -> vehicle.getVin() != vin);
+        return filteredList;
+    }
+
     public List<Vehicle> getVehiclesByPrice(double min, double max){
             List<Vehicle> inventoryWithinRange = new ArrayList<>();
 
@@ -75,36 +82,31 @@ public class Dealership {
     }
 
     public List<Vehicle> getVehiclesByYear(int min, int max) {
-        // Method to retrieve vehicles by a specific year
-        List<Vehicle> vehiclesByYear = new ArrayList<>();
-        // Add logic here to filter vehicles by year
-        return vehiclesByYear;
+        ArrayList<Vehicle> filteredList = new ArrayList<>(inventory);
+        filteredList.removeIf(vehicle -> vehicle.getYear() < min || vehicle.getYear() > max);
+        return filteredList;
     }
 
     public List<Vehicle> getVehiclesByColor(String color) {
-        // Method to retrieve vehicles by a specific color
-        List<Vehicle> vehiclesByColor = new ArrayList<>();
-        // Add logic here to filter vehicles by color
-        return vehiclesByColor;
+        ArrayList<Vehicle> filteredList = new ArrayList<>(inventory);
+        filteredList.removeIf(vehicle -> !vehicle.getColor().contains(color));
+        return filteredList;
     }
 
-    public List<Vehicle> getVehiclesByMileage(int minMileage, int maxMileage) {
-        // Method to retrieve vehicles within a specific mileage range
-        List<Vehicle> vehiclesByMileage = new ArrayList<>();
-        // Add logic here to filter vehicles by mileage range
-        return vehiclesByMileage;
+    public List<Vehicle> getVehiclesByMileage(int min, int max) {
+        ArrayList<Vehicle> filteredList = new ArrayList<>(inventory);
+        filteredList.removeIf(vehicle -> vehicle.getOdometer() < min || vehicle.getOdometer() > max);
+        return filteredList;
     }
 
-    public List<Vehicle> getVehiclesByType(String type) {
-        // Method to retrieve vehicles by a specific type
-        List<Vehicle> vehiclesByType = new ArrayList<>();
-        // Add logic here to filter vehicles by type
-        return vehiclesByType;
+    public List<Vehicle> getVehiclesByType(String vehicleType) {
+        ArrayList<Vehicle> filteredList = new ArrayList<>(inventory);
+        filteredList.removeIf(vehicle -> !vehicle.getType().contains(vehicleType));
+        return filteredList;
     }
 
     public void removeVehicle(Vehicle vehicle) {
-        // Method to remove a specific vehicle from the inventory
-        // Add logic here to remove the provided vehicle from the inventory
+        inventory.remove(vehicle);
     }
 
 
@@ -126,5 +128,14 @@ public class Dealership {
 
     public List<Vehicle> getInventory() {
         return inventory;
+    }
+
+    @Override
+    public String toString() {
+        return "Dealership{" +
+                "dealershipName='" + dealershipName + '\'' +
+                ", dealershipAddress='" + dealershipAddress + '\'' +
+                ", dealershipPhoneNumber='" + dealershipPhoneNumber + '\'' +
+                '}';
     }
 }
